@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.ShopMapper">
+
+    <select id="getShopById" resultType="com.zb.pojo.Shop">
+        select
+                id as id,
+                name as name,
+                seller_id as sellerId
+        from shop
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getShopListByMap" resultType="com.zb.pojo.Shop" parameterType="java.util.Map">
+        select
+                id as id,
+                name as name,
+                seller_id as sellerId
+        from shop
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="name != null and name!=''">
+                    and name=#{name}
+                </if>
+                <if test="sellerId != null and sellerId!=''">
+                    and seller_id=#{sellerId}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getShopCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from shop
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="name != null and name!=''">
+                    and name=#{name}
+                </if>
+                <if test="sellerId != null and sellerId!=''">
+                    and seller_id=#{sellerId}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertShop" parameterType="com.zb.pojo.Shop">
+        insert into shop(
+                        name,
+                        seller_id)
+        values(
+                     #{name},
+                    #{sellerId})
+    </insert>
+
+    <update id="updateShop" parameterType="com.zb.pojo.Shop">
+        update shop
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="name != null and name!=''">
+                            name=#{name},
+                        </if>
+                        <if test="sellerId != null and sellerId!=''">
+                            seller_id=#{sellerId}
+                        </if>
+        </trim>
+    </update>
+</mapper>

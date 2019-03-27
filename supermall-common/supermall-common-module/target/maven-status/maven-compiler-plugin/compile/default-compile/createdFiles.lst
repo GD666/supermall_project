@@ -1,0 +1,16 @@
+com\zb\pojo\Goodstype.class
+com\zb\pojo\Orders.class
+com\zb\pojo\Users.class
+com\zb\pojo\Seller.class
+com\zb\pojo\Goodsqualityvalue.class
+com\zb\pojo\QgGoodsTempStock.class
+com\zb\pojo\QgGoods.class
+com\zb\pojo\Collectgoods.class
+com\zb\pojo\Goods.class
+com\zb\pojo\Goodsquality.class
+com\zb\pojo\Admin.class
+com\zb\pojo\Trade.class
+com\zb\pojo\Collectshops.class
+com\zb\pojo\Shop.class
+com\zb\pojo\Goodsimg.class
+com\zb\pojo\QgGoodsMessage.class

@@ -1,0 +1,16 @@
+com\zb\mapper\GoodsimgMapper.class
+com\zb\mapper\CollectgoodsMapper.class
+com\zb\mapper\SellerMapper.class
+com\zb\mapper\GoodsqualityMapper.class
+com\zb\mapper\UsersMapper.class
+com\zb\mapper\OrdersMapper.class
+com\zb\mapper\QgGoodsMessageMapper.class
+com\zb\mapper\QgGoodsTempStockMapper.class
+com\zb\mapper\GoodsqualityvalueMapper.class
+com\zb\mapper\QgGoodsMapper.class
+com\zb\mapper\AdminMapper.class
+com\zb\mapper\GoodstypeMapper.class
+com\zb\mapper\GoodsMapper.class
+com\zb\mapper\CollectshopsMapper.class
+com\zb\mapper\ShopMapper.class
+com\zb\mapper\TradeMapper.class

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.GoodsqualityMapper">
+
+    <select id="getGoodsqualityById" resultType="com.zb.pojo.Goodsquality">
+        select
+                id as id,
+                goodstype_id as goodstypeId,
+                name as name
+        from goodsquality
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getGoodsqualityListByMap" resultType="com.zb.pojo.Goodsquality" parameterType="java.util.Map">
+        select
+                id as id,
+                goodstype_id as goodstypeId,
+                name as name
+        from goodsquality
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="goodstypeId != null and goodstypeId!=''">
+                    and goodstype_id=#{goodstypeId}
+                </if>
+                <if test="name != null and name!=''">
+                    and name=#{name}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getGoodsqualityCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from goodsquality
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="goodstypeId != null and goodstypeId!=''">
+                    and goodstype_id=#{goodstypeId}
+                </if>
+                <if test="name != null and name!=''">
+                    and name=#{name}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertGoodsquality" parameterType="com.zb.pojo.Goodsquality">
+        insert into goodsquality(
+                        goodstype_id,
+                        name)
+        values(
+                     #{goodstypeId},
+                    #{name})
+    </insert>
+
+    <update id="updateGoodsquality" parameterType="com.zb.pojo.Goodsquality">
+        update goodsquality
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="goodstypeId != null and goodstypeId!=''">
+                            goodstype_id=#{goodstypeId},
+                        </if>
+                        <if test="name != null and name!=''">
+                            name=#{name}
+                        </if>
+        </trim>
+    </update>
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.SellerMapper">
+
+    <select id="getSellerById" resultType="com.zb.pojo.Seller">
+        select
+                id as id,
+                phone as phone,
+                password as password,
+                sellerId as sellerId
+        from seller
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getSellerListByMap" resultType="com.zb.pojo.Seller" parameterType="java.util.Map">
+        select
+                id as id,
+                phone as phone,
+                password as password,
+                sellerId as sellerId
+        from seller
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="password != null and password!=''">
+                    and password=#{password}
+                </if>
+                <if test="sellerId != null and sellerId!=''">
+                    and sellerId=#{sellerId}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getSellerCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from seller
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="password != null and password!=''">
+                    and password=#{password}
+                </if>
+                <if test="sellerId != null and sellerId!=''">
+                    and sellerId=#{sellerId}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertSeller" parameterType="com.zb.pojo.Seller">
+        insert into seller(
+                        phone,
+                        password,
+                        sellerId)
+        values(
+                     #{phone},
+                     #{password},
+                    #{sellerId})
+    </insert>
+
+    <update id="updateSeller" parameterType="com.zb.pojo.Seller">
+        update seller
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="phone != null and phone!=''">
+                            phone=#{phone},
+                        </if>
+                        <if test="password != null and password!=''">
+                            password=#{password},
+                        </if>
+                        <if test="sellerId != null and sellerId!=''">
+                            sellerId=#{sellerId}
+                        </if>
+        </trim>
+    </update>
+</mapper>

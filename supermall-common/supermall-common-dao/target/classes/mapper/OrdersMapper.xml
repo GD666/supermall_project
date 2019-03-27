@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.OrdersMapper">
+
+    <select id="getOrdersById" resultType="com.zb.pojo.Orders">
+        select
+                id as id,
+                stock_id as stockId,
+                goods_id as goodsId,
+                user_id as userId,
+                address as address,
+                receiver as receiver,
+                post as post,
+                phone as phone,
+                usermessage as usermessage,
+                createdate as createdate,
+                deliverydate as deliverydate,
+                status as status,
+                num as num,
+                amount as amount,
+                aliTradeNo as aliTradeNo,
+                orderNo as orderNo
+        from orders
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getOrdersListByMap" resultType="com.zb.pojo.Orders" parameterType="java.util.Map">
+        select
+                id as id,
+                stock_id as stockId,
+                goods_id as goodsId,
+                user_id as userId,
+                address as address,
+                receiver as receiver,
+                post as post,
+                phone as phone,
+                usermessage as usermessage,
+                createdate as createdate,
+                deliverydate as deliverydate,
+                status as status,
+                num as num,
+                amount as amount,
+                aliTradeNo as aliTradeNo,
+                orderNo as orderNo
+        from orders
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="stockId != null and stockId!=''">
+                    and stock_id=#{stockId}
+                </if>
+                <if test="goodsId != null and goodsId!=''">
+                    and goods_id=#{goodsId}
+                </if>
+                <if test="userId != null and userId!=''">
+                    and user_id=#{userId}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+                <if test="receiver != null and receiver!=''">
+                    and receiver=#{receiver}
+                </if>
+                <if test="post != null and post!=''">
+                    and post=#{post}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="usermessage != null and usermessage!=''">
+                    and usermessage=#{usermessage}
+                </if>
+                <if test="createdate != null and createdate!=''">
+                    and createdate=#{createdate}
+                </if>
+                <if test="deliverydate != null and deliverydate!=''">
+                    and deliverydate=#{deliverydate}
+                </if>
+                <if test="status != null and status!=''">
+                    and status=#{status}
+                </if>
+                <if test="num != null and num!=''">
+                    and num=#{num}
+                </if>
+                <if test="amount != null and amount!=''">
+                    and amount=#{amount}
+                </if>
+                <if test="aliTradeNo != null and aliTradeNo!=''">
+                    and aliTradeNo=#{aliTradeNo}
+                </if>
+                <if test="orderNo != null and orderNo!=''">
+                    and orderNo=#{orderNo}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getOrdersCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from orders
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="stockId != null and stockId!=''">
+                    and stock_id=#{stockId}
+                </if>
+                <if test="goodsId != null and goodsId!=''">
+                    and goods_id=#{goodsId}
+                </if>
+                <if test="userId != null and userId!=''">
+                    and user_id=#{userId}
+                </if>
+                <if test="address != null and address!=''">
+                    and address=#{address}
+                </if>
+                <if test="receiver != null and receiver!=''">
+                    and receiver=#{receiver}
+                </if>
+                <if test="post != null and post!=''">
+                    and post=#{post}
+                </if>
+                <if test="phone != null and phone!=''">
+                    and phone=#{phone}
+                </if>
+                <if test="usermessage != null and usermessage!=''">
+                    and usermessage=#{usermessage}
+                </if>
+                <if test="createdate != null and createdate!=''">
+                    and createdate=#{createdate}
+                </if>
+                <if test="deliverydate != null and deliverydate!=''">
+                    and deliverydate=#{deliverydate}
+                </if>
+                <if test="status != null and status!=''">
+                    and status=#{status}
+                </if>
+                <if test="num != null and num!=''">
+                    and num=#{num}
+                </if>
+                <if test="amount != null and amount!=''">
+                    and amount=#{amount}
+                </if>
+                <if test="aliTradeNo != null and aliTradeNo!=''">
+                    and aliTradeNo=#{aliTradeNo}
+                </if>
+                <if test="orderNo != null and orderNo!=''">
+                    and orderNo=#{orderNo}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertOrders" parameterType="com.zb.pojo.Orders">
+        insert into orders(
+                        stock_id,
+                        goods_id,
+                        user_id,
+                        address,
+                        receiver,
+                        post,
+                        phone,
+                        usermessage,
+                        createdate,
+                        deliverydate,
+                        status,
+                        num,
+                        amount,
+                        aliTradeNo,
+                        orderNo)
+        values(
+                     #{stockId},
+                     #{goodsId},
+                     #{userId},
+                     #{address},
+                     #{receiver},
+                     #{post},
+                     #{phone},
+                     #{usermessage},
+                     #{createdate},
+                     #{deliverydate},
+                     #{status},
+                     #{num},
+                     #{amount},
+                     #{aliTradeNo},
+                    #{orderNo})
+    </insert>
+
+    <update id="updateOrders" parameterType="com.zb.pojo.Orders">
+        update orders
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="stockId != null and stockId!=''">
+                            stock_id=#{stockId},
+                        </if>
+                        <if test="goodsId != null and goodsId!=''">
+                            goods_id=#{goodsId},
+                        </if>
+                        <if test="userId != null and userId!=''">
+                            user_id=#{userId},
+                        </if>
+                        <if test="address != null and address!=''">
+                            address=#{address},
+                        </if>
+                        <if test="receiver != null and receiver!=''">
+                            receiver=#{receiver},
+                        </if>
+                        <if test="post != null and post!=''">
+                            post=#{post},
+                        </if>
+                        <if test="phone != null and phone!=''">
+                            phone=#{phone},
+                        </if>
+                        <if test="usermessage != null and usermessage!=''">
+                            usermessage=#{usermessage},
+                        </if>
+                        <if test="createdate != null and createdate!=''">
+                            createdate=#{createdate},
+                        </if>
+                        <if test="deliverydate != null and deliverydate!=''">
+                            deliverydate=#{deliverydate},
+                        </if>
+                        <if test="status != null and status!=''">
+                            status=#{status},
+                        </if>
+                        <if test="num != null and num!=''">
+                            num=#{num},
+                        </if>
+                        <if test="amount != null and amount!=''">
+                            amount=#{amount},
+                        </if>
+                        <if test="aliTradeNo != null and aliTradeNo!=''">
+                            aliTradeNo=#{aliTradeNo},
+                        </if>
+                        <if test="orderNo != null and orderNo!=''">
+                            orderNo=#{orderNo}
+                        </if>
+        </trim>
+    </update>
+</mapper>

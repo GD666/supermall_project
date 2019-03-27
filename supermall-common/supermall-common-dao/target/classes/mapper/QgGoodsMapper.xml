@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zb.mapper.QgGoodsMapper">
+
+    <select id="getQgGoodsById" resultType="com.zb.pojo.QgGoods">
+        select
+                id as id,
+                name as name,
+                img as img,
+                originalprice as originalprice,
+                stock as stock,
+                createdTime as createdTime,
+                updatedTime as updatedTime,
+                goodsId as goodsId
+        from qg_goods
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getQgGoodsListByMap" resultType="com.zb.pojo.QgGoods" parameterType="java.util.Map">
+        select
+                id as id,
+                name as name,
+                img as img,
+                originalprice as originalprice,
+                stock as stock,
+                createdTime as createdTime,
+                updatedTime as updatedTime,
+                goodsId as goodsId
+        from qg_goods
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="name != null and name!=''">
+                    and name=#{name}
+                </if>
+                <if test="img != null and img!=''">
+                    and img=#{img}
+                </if>
+                <if test="originalprice != null and originalprice!=''">
+                    and originalprice=#{originalprice}
+                </if>
+                <if test="stock != null and stock!=''">
+                    and stock=#{stock}
+                </if>
+                <if test="createdTime != null and createdTime!=''">
+                    and createdTime=#{createdTime}
+                </if>
+                <if test="updatedTime != null and updatedTime!=''">
+                    and updatedTime=#{updatedTime}
+                </if>
+                <if test="goodsId != null and goodsId!=''">
+                    and goodsId=#{goodsId}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getQgGoodsCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from qg_goods
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="name != null and name!=''">
+                    and name=#{name}
+                </if>
+                <if test="img != null and img!=''">
+                    and img=#{img}
+                </if>
+                <if test="originalprice != null and originalprice!=''">
+                    and originalprice=#{originalprice}
+                </if>
+                <if test="stock != null and stock!=''">
+                    and stock=#{stock}
+                </if>
+                <if test="createdTime != null and createdTime!=''">
+                    and createdTime=#{createdTime}
+                </if>
+                <if test="updatedTime != null and updatedTime!=''">
+                    and updatedTime=#{updatedTime}
+                </if>
+                <if test="goodsId != null and goodsId!=''">
+                    and goodsId=#{goodsId}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertQgGoods" parameterType="com.zb.pojo.QgGoods">
+        insert into qg_goods(
+                        name,
+                        img,
+                        originalprice,
+                        stock,
+                        createdTime,
+                        updatedTime,
+                        goodsId)
+        values(
+                     #{name},
+                     #{img},
+                     #{originalprice},
+                     #{stock},
+                     #{createdTime},
+                     #{updatedTime},
+                    #{goodsId})
+    </insert>
+
+    <update id="updateQgGoods" parameterType="com.zb.pojo.QgGoods">
+        update qg_goods
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="name != null and name!=''">
+                            name=#{name},
+                        </if>
+                        <if test="img != null and img!=''">
+                            img=#{img},
+                        </if>
+                        <if test="originalprice != null and originalprice!=''">
+                            originalprice=#{originalprice},
+                        </if>
+                        <if test="stock != null and stock!=''">
+                            stock=#{stock},
+                        </if>
+                        <if test="createdTime != null and createdTime!=''">
+                            createdTime=#{createdTime},
+                        </if>
+                        <if test="updatedTime != null and updatedTime!=''">
+                            updatedTime=#{updatedTime},
+                        </if>
+                        <if test="goodsId != null and goodsId!=''">
+                            goodsId=#{goodsId}
+                        </if>
+        </trim>
+    </update>
+</mapper>
