@@ -12,8 +12,8 @@ com\zb\util\Constants$QueueName.class
 com\zb\util\RedisUtils.class
 com\zb\util\Constants$QgStatus.class
 com\zb\util\TokenValidationFailedException.class
+com\zb\config\RedisConfig.class
 com\zb\util\UrlUtils.class
-cpm\zb\config\RedisConfig.class
 com\zb\util\DateUtil.class
 com\zb\util\MD5.class
 com\zb\util\EmptyUtils.class
