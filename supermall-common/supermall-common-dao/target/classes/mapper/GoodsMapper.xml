@@ -38,32 +38,11 @@
                 shop_id as shopId
         from goods
         <trim prefix="where" prefixOverrides="and | or">
-                <if test="id != null and id!=''">
-                    and id=#{id}
+                <if test="name != null and name.replace(' ','')!=''">
+                    and name like concat('%',#{name},'%')
                 </if>
-                <if test="name != null and name!=''">
-                    and name=#{name}
-                </if>
-                <if test="subtitle != null and subtitle!=''">
-                    and subtitle=#{subtitle}
-                </if>
-                <if test="originalprice != null and originalprice!=''">
-                    and originalprice=#{originalprice}
-                </if>
-                <if test="promoteprice != null and promoteprice!=''">
-                    and promoteprice=#{promoteprice}
-                </if>
-                <if test="stock != null and stock!=''">
-                    and stock=#{stock}
-                </if>
-                <if test="goodstypeId != null and goodstypeId!=''">
-                    and goodstype_id=#{goodstypeId}
-                </if>
-                <if test="createdate != null and createdate!=''">
-                    and createdate=#{createdate}
-                </if>
-                <if test="updatedate != null and updatedate!=''">
-                    and updatedate=#{updatedate}
+                <if test="subtitle != null and subtitle.replace(' ','')!=''">
+                    and subtitle like concat('%',#{subtitle},'%')
                 </if>
                 <if test="shopId != null and shopId!=''">
                     and shop_id=#{shopId}
@@ -77,36 +56,15 @@
     <select id="getGoodsCountByMap" resultType="Integer"  parameterType="java.util.Map">
         select count(*) from goods
         <trim prefix="where" prefixOverrides="and | or">
-                <if test="id != null and id!=''">
-                    and id=#{id}
-                </if>
-                <if test="name != null and name!=''">
-                    and name=#{name}
-                </if>
-                <if test="subtitle != null and subtitle!=''">
-                    and subtitle=#{subtitle}
-                </if>
-                <if test="originalprice != null and originalprice!=''">
-                    and originalprice=#{originalprice}
-                </if>
-                <if test="promoteprice != null and promoteprice!=''">
-                    and promoteprice=#{promoteprice}
-                </if>
-                <if test="stock != null and stock!=''">
-                    and stock=#{stock}
-                </if>
-                <if test="goodstypeId != null and goodstypeId!=''">
-                    and goodstype_id=#{goodstypeId}
-                </if>
-                <if test="createdate != null and createdate!=''">
-                    and createdate=#{createdate}
-                </if>
-                <if test="updatedate != null and updatedate!=''">
-                    and updatedate=#{updatedate}
-                </if>
-                <if test="shopId != null and shopId!=''">
-                    and shop_id=#{shopId}
-                </if>
+            <if test="name != null and name.replace(' ','')!=''">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="subtitle != null and subtitle.replace(' ','')!=''">
+                and subtitle like concat('%',#{subtitle},'%')
+            </if>
+            <if test="shopId != null and shopId!=''">
+                and shop_id=#{shopId}
+            </if>
         </trim>
     </select>
 
