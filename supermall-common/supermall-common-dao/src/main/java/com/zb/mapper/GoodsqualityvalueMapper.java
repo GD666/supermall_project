@@ -22,4 +22,8 @@ public interface GoodsqualityvalueMapper {
 
 	public Integer batchDeleteGoodsqualityvalue(Map<String,List<String>> params);
 
+	//主界面收索分页查询
+	public List<Goodsqualityvalue> getGoodsqualityvalueByMap(Map<String,Object> param)throws Exception;
+
+	public Integer getCountByMap(Map<String,Object> param)throws Exception;
 }
