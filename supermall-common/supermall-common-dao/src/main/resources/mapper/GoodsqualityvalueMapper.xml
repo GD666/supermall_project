@@ -131,13 +131,13 @@
         INNER JOIN `goodsquality` AS gq
         ON gv.`goodsquality_id`=gq.`id`
         <where>
-            <if test="keyWords != null and keyWords.replace(' ','')!=''">
+            <if test="keyWords != null and keyWords!=''">
               AND  g.`name`LIKE CONCAT('%',#{keyWords},'%') OR g.`subtitle`LIKE CONCAT('%',#{keyWords},'%')
             </if>
-            <if test="goodstypeId >0">
+            <if test="goodstypeId>0">
                 AND gt.`id`=#{goodstypeId}
             </if>
-            <if test="goodsqualityId >0">
+            <if test="goodsqualityId>0">
                 AND gq.`id`=#{goodsqualityId}
             </if>
             <if test="minmoney !=null and maxmoney==null">
@@ -147,7 +147,7 @@
                 AND  #{maxmoney}>=g.`originalprice`
             </if>
             <if test="minmoney !=null and maxmoney!=null">
-                AND g.`originalprice` BETWEEN(#{minmoney},#{maxmoney})
+                AND g.`originalprice` BETWEEN #{minmoney} AND #{maxmoney}
             </if>
         </where>
         <if test="ordernum==1">
@@ -178,13 +178,13 @@
         INNER JOIN `goodsquality` AS gq
         ON gv.`goodsquality_id`=gq.`id`
         <where>
-            <if test="keyWords != null and keyWords.replace(' ','')!=''">
+            <if test="keyWords != null and keyWords!=''">
                 AND  g.`name`LIKE CONCAT('%',#{keyWords},'%') OR g.`subtitle`LIKE CONCAT('%',#{keyWords},'%')
             </if>
-            <if test="goodstypeId >0">
+            <if test="goodstypeId>0">
                 AND gt.`id`=#{goodstypeId}
             </if>
-            <if test="goodsqualityId >0">
+            <if test="goodsqualityId>0">
                 AND gq.`id`=#{goodsqualityId}
             </if>
             <if test="minmoney !=null and maxmoney==null">
@@ -194,7 +194,7 @@
                 AND  #{maxmoney}>=g.`originalprice`
             </if>
             <if test="minmoney !=null and maxmoney!=null">
-                AND g.`originalprice` BETWEEN(#{minmoney},#{maxmoney})
+                AND g.`originalprice` BETWEEN #{minmoney} AND #{maxmoney}
             </if>
         </where>
     </select>

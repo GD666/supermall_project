@@ -87,4 +87,115 @@
                         </if>
         </trim>
     </update>
+
+    <resultMap id="GoodsqualityvalueMap" type="com.zb.pojo.Goodsqualityvalue">
+        <id property="id" column="id"/>
+        <result property="value" column="value"/>
+        <association property="goods" javaType="com.zb.pojo.Goods">
+            <id property="id" column="goodsId" />
+            <result property="name" column="goodsName" />
+            <result property="subtitle" column="subtitle" />
+            <result property="originalprice" column="originalprice" />
+            <result property="promoteprice" column="promoteprice" />
+            <result property="stock" column="stock" />
+            <result property="createdate" column="createdate"/>
+            <result property="updatedate" column="updatedate"/>
+        </association>
+        <association property="goodsquality" javaType="com.zb.pojo.Goodsquality">
+            <id property="id" column="goodsqualityId"/>
+            <result property="name" column="goodsqualityName"/>
+        </association>
+        <association property="goodstype" javaType="com.zb.pojo.Goodstype" >
+            <id property="id" column="goodstypeId"/>
+            <result property="name" column="goodstypeName"/>
+        </association>
+        <association property="goodsimg" javaType="com.zb.pojo.Goodsimg">
+            <id property="id" column="goodsimgId"/>
+            <result property="imgs" column="imgs"/>
+        </association>
+    </resultMap>
+
+
+    <select id="getGoodsqualityvalueByMap" resultMap="GoodsqualityvalueMap">
+        SELECT g.`id`AS goodsId,g.`name`AS goodsName,g.`subtitle`,g.`promoteprice`,g.`originalprice`,g.`createdate`,g.`updatedate`,g.`stock`,
+        gq.`id`AS goodsqualityId,gq.`name`AS goodsqualityName,
+        gt.`id`AS goodstypeId,gt.`name`AS goodstypeName,
+        gi.`id`AS goodsimgId,gi.`imgs` 
+        FROM `goodsqualityvalue`AS gv
+        INNER JOIN `goods` AS g
+        ON gv.`goods_id`=g.`id`
+        INNER JOIN `goodstype` AS gt
+        ON gv.`goodstype_id`=gt.`id`
+        INNER JOIN `goodsimg` AS gi
+        ON gv.`goodsimg_id`=gi.`id`
+        INNER JOIN `goodsquality` AS gq
+        ON gv.`goodsquality_id`=gq.`id`
+        <where>
+            <if test="keyWords != null and keyWords!=''">
+              AND  g.`name`LIKE CONCAT('%',#{keyWords},'%') OR g.`subtitle`LIKE CONCAT('%',#{keyWords},'%')
+            </if>
+            <if test="goodstypeId>0">
+                AND gt.`id`=#{goodstypeId}
+            </if>
+            <if test="goodsqualityId>0">
+                AND gq.`id`=#{goodsqualityId}
+            </if>
+            <if test="minmoney !=null and maxmoney==null">
+                AND g.`originalprice`>=#{minmoney}
+            </if>
+            <if test="minmoney ==null and maxmoney!=null">
+                AND  #{maxmoney}>=g.`originalprice`
+            </if>
+            <if test="minmoney !=null and maxmoney!=null">
+                AND g.`originalprice` BETWEEN #{minmoney} AND #{maxmoney}
+            </if>
+        </where>
+        <if test="ordernum==1">
+            ORDER BY g.`id`
+        </if>
+        <if test="ordernum==2">
+            ORDER BY g.`id`DESC
+        </if>
+        <if test="ordernum==3">
+            ORDER BY g.`originalprice`
+        </if>
+        <if test="ordernum==4">
+            ORDER BY g.`originalprice` DESC
+        </if>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+    <select id="getCountByMap" resultType="int">
+        SELECT count(*)
+        FROM `goodsqualityvalue`AS gv
+        INNER JOIN `goods` AS g
+        ON gv.`goods_id`=g.`id`
+        INNER JOIN `goodstype` AS gt
+        ON gv.`goodstype_id`=gt.`id`
+        INNER JOIN `goodsimg` AS gi
+        ON gv.`goodsimg_id`=gi.`id`
+        INNER JOIN `goodsquality` AS gq
+        ON gv.`goodsquality_id`=gq.`id`
+        <where>
+            <if test="keyWords != null and keyWords!=''">
+                AND  g.`name`LIKE CONCAT('%',#{keyWords},'%') OR g.`subtitle`LIKE CONCAT('%',#{keyWords},'%')
+            </if>
+            <if test="goodstypeId>0">
+                AND gt.`id`=#{goodstypeId}
+            </if>
+            <if test="goodsqualityId>0">
+                AND gq.`id`=#{goodsqualityId}
+            </if>
+            <if test="minmoney !=null and maxmoney==null">
+                AND g.`originalprice`>=#{minmoney}
+            </if>
+            <if test="minmoney ==null and maxmoney!=null">
+                AND  #{maxmoney}>=g.`originalprice`
+            </if>
+            <if test="minmoney !=null and maxmoney!=null">
+                AND g.`originalprice` BETWEEN #{minmoney} AND #{maxmoney}
+            </if>
+        </where>
+    </select>
 </mapper>
