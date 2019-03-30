@@ -10,4 +10,6 @@ public interface RpcGoodsService {
     public List<Goodsqualityvalue> getGoodsListByMap(Map<String,Object> param)throws Exception;
 
     public Integer getGoodsCountByMap(Map<String,Object> param)throws Exception;
+
+   public Goods getGoodsById(Integer id)throws Exception;
 }

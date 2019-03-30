@@ -11,6 +11,7 @@ public class Goodsimg implements Serializable {
     private Integer goodsId;
     //商品图片地址
     private String imgs;
+
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -30,4 +31,6 @@ public class Goodsimg implements Serializable {
     public  String getImgs(){
         return this.imgs;
     }
+
+
 }

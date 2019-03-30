@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface GoodsimgMapper {
 
-	public Goodsimg getGoodsimgById(@Param(value = "id") Long id)throws Exception;
+	public Goodsimg getGoodsimgByGoodsId(@Param(value = "goodsId") Integer goodsId)throws Exception;
 
 	public List<Goodsimg>	getGoodsimgListByMap(Map<String,Object> param)throws Exception;
 
