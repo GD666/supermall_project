@@ -25,6 +25,10 @@ public class Goods implements Serializable {
     private Date updatedate;
     //商铺id
     private Integer shopId;
+    //商品状态
+    private Integer status;
+
+    private Goodsimg goodsimg=new Goodsimg();
     //get set 方法
     public void setId (Integer  id){
         this.id=id;
@@ -85,5 +89,21 @@ public class Goods implements Serializable {
     }
     public  Integer getShopId(){
         return this.shopId;
+    }
+
+    public Goodsimg getGoodsimg() {
+        return goodsimg;
+    }
+
+    public void setGoodsimg(Goodsimg goodsimg) {
+        this.goodsimg = goodsimg;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

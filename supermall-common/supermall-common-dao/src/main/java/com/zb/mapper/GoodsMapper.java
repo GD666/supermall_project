@@ -23,4 +23,5 @@ public interface GoodsMapper {
 	public Integer batchDeleteGoods(Map<String,List<String>> params);
 
 
+
 }

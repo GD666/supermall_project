@@ -149,6 +149,7 @@
             <if test="minmoney !=null and maxmoney!=null">
                 AND g.`originalprice` BETWEEN #{minmoney} AND #{maxmoney}
             </if>
+            AND `status`=1
         </where>
         <if test="ordernum==1">
             ORDER BY g.`id`
@@ -196,6 +197,7 @@
             <if test="minmoney !=null and maxmoney!=null">
                 AND g.`originalprice` BETWEEN #{minmoney} AND #{maxmoney}
             </if>
+            AND `status`=1
         </where>
     </select>
 </mapper>
