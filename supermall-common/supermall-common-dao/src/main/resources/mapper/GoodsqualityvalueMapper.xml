@@ -100,6 +100,7 @@
             <result property="stock" column="stock" />
             <result property="createdate" column="createdate"/>
             <result property="updatedate" column="updatedate"/>
+            <result property="collectnum" column="collectnum"/>
         </association>
         <association property="goodsquality" javaType="com.zb.pojo.Goodsquality">
             <id property="id" column="goodsqualityId"/>
@@ -117,7 +118,7 @@
 
 
     <select id="getGoodsqualityvalueByMap" resultMap="GoodsqualityvalueMap">
-        SELECT g.`id`AS goodsId,g.`name`AS goodsName,g.`subtitle`,g.`promoteprice`,g.`originalprice`,g.`createdate`,g.`updatedate`,g.`stock`,
+        SELECT g.`id`AS goodsId,g.`name`AS goodsName,g.`subtitle`,g.`promoteprice`,g.`originalprice`,g.`createdate`,g.`updatedate`,g.`stock`,g.`collectnum`,
         gq.`id`AS goodsqualityId,gq.`name`AS goodsqualityName,
         gt.`id`AS goodstypeId,gt.`name`AS goodstypeName,
         gi.`id`AS goodsimgId,gi.`imgs` 

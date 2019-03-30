@@ -27,6 +27,8 @@ public class Goods implements Serializable {
     private Integer shopId;
     //商品状态
     private Integer status;
+    //收藏量
+    private Integer collectnum;
 
     private Goodsimg goodsimg=new Goodsimg();
     //get set 方法
@@ -105,5 +107,13 @@ public class Goods implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getCollectnum() {
+        return collectnum;
+    }
+
+    public void setCollectnum(Integer collectnum) {
+        this.collectnum = collectnum;
     }
 }
