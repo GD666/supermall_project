@@ -11,6 +11,7 @@ com\zb\mapper\QgGoodsMapper.class
 com\zb\mapper\AdminMapper.class
 com\zb\mapper\GoodstypeMapper.class
 com\zb\mapper\GoodsMapper.class
+com\zb\mapper\BuyGoodsTempMapper.class
 com\zb\mapper\CollectshopsMapper.class
 com\zb\mapper\ShopMapper.class
 com\zb\mapper\TradeMapper.class

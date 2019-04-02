@@ -126,4 +126,11 @@
                         </if>
         </trim>
     </update>
+    <update id="updatePwd">
+        update users set password=#{password} where phone=#{phone}
+    </update>
+
+    <insert id="register">
+        INSERT INTO users (phone) VALUE(#{phone});
+    </insert>
 </mapper>

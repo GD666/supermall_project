@@ -164,9 +164,7 @@
         <if test="ordernum==4">
             ORDER BY g.`originalprice` DESC
         </if>
-        <if test="beginPos != null and pageSize != null ">
-            limit #{beginPos},#{pageSize}
-        </if>
+            limit #{from},#{size}
     </select>
     <select id="getCountByMap" resultType="int">
         SELECT count(*)

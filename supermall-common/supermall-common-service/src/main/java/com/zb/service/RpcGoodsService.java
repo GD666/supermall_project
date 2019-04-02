@@ -1,5 +1,6 @@
 package com.zb.service;
 
+import com.zb.pojo.BuyGoodsTemp;
 import com.zb.pojo.Goods;
 import com.zb.pojo.Goodsqualityvalue;
 
@@ -12,4 +13,6 @@ public interface RpcGoodsService {
     public Integer getGoodsCountByMap(Map<String,Object> param)throws Exception;
 
    public Goods getGoodsById(Integer id)throws Exception;
+
+   public Integer addBuyGoodsTemp(BuyGoodsTemp buyGoodsTemp)throws Exception;
 }

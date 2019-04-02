@@ -11,6 +11,7 @@ com\zb\pojo\Goodsquality.class
 com\zb\pojo\Admin.class
 com\zb\pojo\Trade.class
 com\zb\pojo\Collectshops.class
+com\zb\pojo\BuyGoodsTemp.class
 com\zb\pojo\Shop.class
 com\zb\pojo\Goodsimg.class
 com\zb\pojo\QgGoodsMessage.class
