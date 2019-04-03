@@ -1,4 +1,5 @@
 com\zb\dto\PageUtil.class
 com\zb\dto\GoodsVo.class
 com\zb\dto\Dto.class
+vo\UserTokenVo.class
 com\zb\dto\DtoUtil.class

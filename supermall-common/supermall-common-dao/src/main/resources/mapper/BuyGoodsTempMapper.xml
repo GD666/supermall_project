@@ -4,4 +4,16 @@
     <insert id="addBuyGoodsTemp" parameterType="com.zb.pojo.BuyGoodsTemp">
         INSERT INTO `buygoods_temp` VALUES(NULL,#{goodsId},#{userId},#{price},#{num},now())
     </insert>
+    <select id="getBuyGoodsTempByUserId" resultType="com.zb.pojo.BuyGoodsTemp">
+        SELECT * FROM `buygoods_temp` WHERE `user—id`=#{userId}
+    </select>
+    <select id="getBuyGoodsTempByUserIdAndGoodsId" resultType="com.zb.pojo.BuyGoodsTemp">
+        SELECT * FROM `buygoods_temp` WHERE `user—id`=#{userId} AND `goods_id`=#{goodsId}
+    </select>
+    <update id="updateBuyGoodsTemp" parameterType="com.zb.pojo.BuyGoodsTemp">
+        UPDATE `buygoods_temp` SET `num`=#{num} WHERE id=#{id}
+    </update>
+    <delete id="delBuyGoodsTemp" parameterType="int">
+        DELETE FROM `buygoods_temp` WHERE id=#{id}
+    </delete>
 </mapper>  

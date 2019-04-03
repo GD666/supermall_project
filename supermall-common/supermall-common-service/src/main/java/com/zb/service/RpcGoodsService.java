@@ -15,4 +15,12 @@ public interface RpcGoodsService {
    public Goods getGoodsById(Integer id)throws Exception;
 
    public Integer addBuyGoodsTemp(BuyGoodsTemp buyGoodsTemp)throws Exception;
+
+   public List<BuyGoodsTemp> getBuyGoodsTempByUserId(Integer userId)throws Exception;
+
+    public BuyGoodsTemp getBuyGoodsTempByUserIdAndGoodsId(Integer userId,Integer goodsId)throws Exception;
+
+    public Integer updateBuyGoodsTemp(BuyGoodsTemp buyGoodsTemp)throws Exception;
+
+    public Integer delBuyGoodsTemp(Integer id)throws Exception;
 }
